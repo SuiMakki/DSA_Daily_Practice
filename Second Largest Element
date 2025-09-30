@@ -1,0 +1,63 @@
+Second Largest Element
+100
+Easy
+
+Given an array of integers nums, return the second-largest element in the array. If the second-largest element does not exist, return -1.
+
+
+Examples:
+Input: nums = [8, 8, 7, 6, 5]
+
+Output: 7
+
+Explanation:
+
+The largest value in nums is 8, the second largest is 7
+
+Input: nums = [10, 10, 10, 10, 10]
+
+Output: -1
+
+Explanation:
+
+The only value in nums is 10, so there is no second largest value, thus -1 is returned
+-------------------------------------------------
+public class SecondlargestNo {
+    public int secondLargestElement(int[] nums) {
+        int largest = Integer.MIN_VALUE;
+        int secondLargest = Integer.MIN_VALUE;
+
+        for (int num : nums) {
+            if (num > largest) {
+                secondLargest = largest;
+                largest = num;
+            } else if (num > secondLargest && num != largest) {
+                secondLargest = num;
+            }
+        }
+
+        // Return -1 if no valid second largest element exists
+        if (secondLargest == Integer.MIN_VALUE) {
+            return -1;
+        }
+
+        return secondLargest;
+    }
+
+    // Main method to test the function
+    public static void main(String[] args) {
+        SecondlargestNo sol = new SecondlargestNo();
+
+        int[] nums1 = {8, 8, 7, 6, 5};
+        System.out.println("Second largest: " + sol.secondLargestElement(nums1)); // 7
+
+        int[] nums2 = {10, 10, 10, 10, 10};
+        System.out.println("Second largest: " + sol.secondLargestElement(nums2)); // -1
+
+        int[] nums3 = {5};
+        System.out.println("Second largest: " + sol.secondLargestElement(nums3)); // -1
+
+        int[] nums4 = {1, 2, 3, 4, 5};
+        System.out.println("Second largest: " + sol.secondLargestElement(nums4)); // 4
+    }
+}
