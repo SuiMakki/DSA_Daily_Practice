@@ -1,0 +1,31 @@
+Check if the Array is Sorted II
+100
+Easy
+
+Given an array nums of n integers, return true if the array nums is sorted in non-decreasing order or else false.
+
+
+Examples:
+Input : nums = [1, 2, 3, 4, 5]
+
+Output : true
+
+Explanation : For all i (1 <= i <= 4) it holds nums[i] <= nums[i+1], hence it is sorted and we return true.
+
+Input : nums = [1, 2, 1, 4, 5]
+
+Output : false
+
+Explanation : For i == 2 it does not hold nums[i] <= nums[i+1], hence it is not sorted and we return false.
+----------------------------------------------------------------------------------------
+class Solution {
+  public boolean isSorted(ArrayList<Integer> nums) {
+    int n = nums.size();
+    for (int i = 0; i < n - 1; i++) { // loop until second last element
+      if (nums.get(i) > nums.get(i + 1)) {
+        return false; // if any element is greater than next → not sorted
+      }
+    }
+    return true; // if loop finishes, array is sorted
+  }
+}
