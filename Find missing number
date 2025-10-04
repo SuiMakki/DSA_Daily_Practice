@@ -1,0 +1,41 @@
+Find missing number
+100
+Easy
+
+Given an integer array of size n containing distinct values in the range from 0 to n (inclusive), return the only number missing from the array within this range.
+
+Examples:
+
+Input: nums = [0, 2, 3, 1, 4]
+Output: 5
+Explanation:
+nums contains 0, 1, 2, 3, 4 thus leaving 5 as the only missing number in the range [0, 5]
+
+Input: nums = [0, 1, 2, 4, 5, 6]
+Output: 3
+Explanation:
+nums contains 0, 1, 2, 4, 5, 6 thus leaving 3 as the only missing number in the range [0, 6]
+---------------------------------------------------------------------------------------------------------
+class Solution {
+  public int missingNumber(int[] nums) {
+    int N = nums.length;
+    int xorAll = 0; // XOR of numbers 1..N
+    int xorArr = 0; // XOR of array elements
+
+    // Step 1: XOR all numbers from 1 to N
+    for (int i = 0; i <= N; i++) {
+      xorAll = xorAll ^ i;
+    }
+
+    // Step 2: XOR all elements in the array
+    for (int num : nums) {
+      xorArr = xorArr ^ num;
+    }
+
+    // Step 3: XOR both results → missing number
+    return xorAll ^ xorArr;
+  }
+}
+--------------------------------------------------------
+T - O(n)
+S - O(1)
