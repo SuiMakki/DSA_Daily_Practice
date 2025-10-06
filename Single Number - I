@@ -1,0 +1,60 @@
+Single Number - I
+100
+Medium
+
+Given an array of nums of n integers. Every integer in the array appears twice except one integer. Find the number that appeared once in the array.
+
+Examples:
+Input : nums = [1, 2, 2, 4, 3, 1, 4]
+Output : 3
+Explanation : The integer 3 has appeared only once.
+
+Input : nums = [5]
+Output : 5
+Explanation : The integer 5 has appeared only once.
+----------------------------------------------------------------------------------------
+class Solution {
+    public int singleNumber(int[] nums) {
+        int ans = 0;
+        for(int i = 0; i<nums.length; i++){
+            ans = ans ^ nums[i];
+        }
+        return ans;
+    }
+}
+-----------------------------------------------------------------------
+⚡ Quick XOR Rules to Remember
+
+a ^ a = 0 → same numbers cancel out
+
+a ^ 0 = a → XOR with 0 changes nothing
+
+XOR is commutative and associative → order doesn’t matter
+So:
+
+4 ^ 1 ^ 2 ^ 1 ^ 2 = 4 ^ (1 ^ 1) ^ (2 ^ 2)
+🧠 Apply those rules instead of doing binary:
+So:
+
+4 ^ 0 ^ 0 = 4
+
+✅ Final Answer = 4
+
+🪄 Trick summary:
+
+Whenever you see repeating numbers in XOR:
+
+Cancel the pairs → they become 0
+
+What remains is your answer
+
+Example:
+
+Expression	Cancelled pairs	Result
+1 ^ 2 ^ 3 ^ 2 ^ 1	(1,1), (2,2)	3
+7 ^ 7 ^ 7	(7,7) → left 7	7
+4 ^ 1 ^ 2 ^ 1 ^ 2	(1,1), (2,2) → left 4	4
+
+So in short:
+
+In XOR, duplicates vanish. Whatever appears odd number of times stays.
