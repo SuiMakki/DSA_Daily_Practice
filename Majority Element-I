@@ -1,0 +1,41 @@
+Majority Element-I
+100
+Easy
+
+Given an integer array nums of size n, return the majority element of the array.
+The majority element of an array is an element that appears more than n/2 times in the array. The array is guaranteed to have a majority element.
+
+Examples:
+
+Input: nums = [7, 0, 0, 1, 7, 7, 2, 7, 7]
+Output: 7
+Explanation:
+The number 7 appears 5 times in the 9 sized array
+
+Input: nums = [1, 1, 1, 2, 1, 2]
+Output: 1
+Explanation:
+The number 1 appears 4 times in the 6 sized array
+-------------------------------------------------------------------------------
+https://leetcode.com/problems/majority-element/solutions/3676530/3-method-s-beats-100-c-java-python-beginner-friendly
+Approach 3: Moore Voting Algorithm
+Intuition:
+The intuition behind the Moore's Voting Algorithm is based on the fact that if there is a majority element in an array, it will always remain in the lead, even after encountering other elements.
+-------------------------------------------------------------------------------
+class Solution {
+    public int majorityElement(int[] nums) {
+        int count = 0, lastElement = 0;
+        for (int curElement : nums) {
+            if (count == 0) {
+                lastElement = curElement;
+            }
+
+            if (lastElement == curElement) {
+                count++;
+            } else {
+                count--;
+            }
+        }
+        return lastElement;
+    }
+}
