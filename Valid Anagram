@@ -1,0 +1,47 @@
+242. Valid Anagram
+Solved
+Easy
+Topics
+premium lock icon
+Companies
+Given two strings s and t, return true if t is an anagram of s, and false otherwise.
+
+
+Example 1:
+Input: s = "anagram", t = "nagaram"
+Output: true
+
+Example 2:
+Input: s = "rat", t = "car"
+Output: false
+ 
+Constraints:
+1 <= s.length, t.length <= 5 * 104
+s and t consist of lowercase English letters.
+ 
+Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
+-----------------------------------------------------------------------------------------------------------------
+class Solution {
+    public static String SortString(String s) {
+        char c[] = s.toCharArray();
+        Arrays.sort(c);
+        return new String(c);
+    }
+
+    public boolean isAnagram(String s, String t) {
+    // Case 1: when both of the strings have different lengths
+        if (s.length() != t.length())
+            return false;
+
+        s = SortString(s);
+        t = SortString(t);
+
+    // Case 2: check if every character of str1 and str2 matches with each other
+        for (int i = 0; i < s.length(); i++) {
+            if (s.charAt(i) != t.charAt(i)) {
+                return false;
+            }
+        }
+        return true;
+    }
+}
