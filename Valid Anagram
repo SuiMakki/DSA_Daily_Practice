@@ -20,7 +20,7 @@ Constraints:
 s and t consist of lowercase English letters.
  
 Follow up: What if the inputs contain Unicode characters? How would you adapt your solution to such a case?
------------------------------------------------------------------------------------------------------------------
+-------------------------------------------------------------------------------------------------------------O(nlogn)----
 class Solution {
     public static String SortString(String s) {
         char c[] = s.toCharArray();
@@ -45,3 +45,4 @@ class Solution {
         return true;
     }
 }
+------------------------------------------------------------------------------------------------------------O(n)--------
