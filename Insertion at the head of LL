@@ -1,0 +1,50 @@
+https://takeuforward.org/linked-list/linked-list-introduction
+
+Check your book where u wrote all linkedlist logic---it's best
+
+Insertion at the head of LL
+100
+Easy
+Given the head of a singly linked list and an integer X, insert a node with value X at the head of the linked list and return the head of the modified list.
+The head is the first node of the linked list.
+
+Examples:
+Input: head -> 1 -> 2 -> 3, X = 7
+Output: head -> 7 -> 1 -> 2 -> 3
+Explanation:
+7 was added as the 1st node.
+
+Input: head, X = 7
+Output: head -> 7
+Explanation:
+7 was added as the 1st node.
+----------------------------------------------------------------------------------time O(1), space O(1)-----------
+/*Definition for singly Linked List
+class ListNode {
+    int val;
+    ListNode next;
+
+    ListNode() {
+        val = 0;
+        next = null;
+    }
+
+    ListNode(int data1) {
+        val = data1;
+        next = null;
+    }
+
+    ListNode(int data1, ListNode next1) {
+        val = data1;
+        next = next1;
+    }
+}
+*/
+
+class Solution {
+  public ListNode insertAtHead(ListNode head, int X) {
+    ListNode temp = new ListNode(X);
+    temp.next = head;
+    return temp;
+  }
+}
