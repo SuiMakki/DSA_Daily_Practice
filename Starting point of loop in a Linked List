@@ -1,0 +1,50 @@
+Starting point of loop in a Linked List
+Mark as Completed
+Problem Statement: Given the head of a linked list that may contain a cycle, return the starting point of that cycle. If there is no cycle in the linked list return null.
+
+Examples
+                Example 1:
+                Input: LL: 1  2  3  4  5 
+                Output: 3
+                Explanation: This linked list contains a loop of size 3 starting at node with value 3.
+                                         
+                Example 2:
+                Input: LL: LL: 1 -> 2 -> 3 -> 4 -> 9 -> 9
+                Output: NULL
+                Explanation:  This linked list does not contain  a loop hence has no starting point. 
+--------------------------------------------------------------------------------------------------------------O(n) -----O(1)
+
+
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     int val;
+ *     ListNode next;
+ *     ListNode(int x) {
+ *         val = x;
+ *         next = null;
+ *     }
+ * }
+ */
+public class Solution {
+    public ListNode detectCycle(ListNode head) {
+        ListNode fast = head;
+        ListNode slow = head;
+
+        while (fast != null && fast.next != null) {
+            slow = slow.next;
+            fast = fast.next.next;
+
+            if (slow == fast) {
+                slow = head;
+
+                while (slow != fast) {
+                    slow = slow.next;
+                    fast = fast.next;
+                }
+                return slow;
+            }
+        }
+        return null;
+    }
+}
