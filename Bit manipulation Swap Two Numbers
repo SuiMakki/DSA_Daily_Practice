@@ -1,0 +1,33 @@
+Swap Two Numbers
+100
+Given two integers a and b, swap them in-place using only 2 variables (without using a temporary variable).
+
+Can you solve it using:
+
+Arithmetic operations?
+Bitwise XOR?
+
+Examples:
+Input: a = 5, b = 10
+
+Output: a = 10, b = 5
+
+Input: a = -100, b = -200
+
+Output: a = -200, b = -100
+----------------------------------
+class Solution {
+    /**
+     * Swaps two integers and returns them as an array.
+     *
+     * @param a the first integer
+     * @param b the second integer
+     * @return an array with the two integers swapped
+     */
+    public int[] swap(int a, int b) {
+        a = a ^ b;
+        b = a ^ b;
+        a = a ^ b;
+        return new int[]{a,b};
+    }
+}
