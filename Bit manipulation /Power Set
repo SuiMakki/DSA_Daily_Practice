@@ -1,0 +1,31 @@
+Problem Statement: Given two integers L and R. Find the XOR of the elements in the range [L , R].
+
+Examples
+Example 1:
+Input : L = 3 , R = 5
+Output : 2
+Explanation : answer = (3 ^ 4 ^ 5) = 2.
+
+Example 2:
+Input : L = 1, R = 3
+Output : 0
+Explanation : answer = (1 ^ 2 ^ 3) = 0.
+---------------------------------------------O(n)---O(1)--
+class Solution {
+
+    /* Function to find the XOR 
+    of numbers from L to R */
+    public int findRangeXOR(int l, int r) {
+        
+        // To store the XOR of numbers
+        int ans = 0;
+        
+        // XOR all the numbers
+        for (int i = l; i <= r; i++) {
+            ans ^= i;
+        }
+        
+        // Return the result
+        return ans;
+}
+
