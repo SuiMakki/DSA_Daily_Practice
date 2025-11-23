@@ -1,0 +1,58 @@
+Floor in a Binary Search Tree
+
+Mark as Completed
+
+Problem Statement: Given a Binary Search Tree and a key, return the floor of the given key in the Binary Search Tree.
+Floor of a value refers to the value of the largest node in the Binary Search Tree that is smaller than or equal to the given key. If the floor node does not exist, return nullptr.
+
+---------------------------------------
+
+class Solution {
+    // Function to find the floor of a key
+    // in a Binary Search Tree (BST)
+    public int floorInBST(TreeNode root, int key) {
+        // Initialize the floor variable
+        // to store the floor value
+        int floor = -1;
+
+        // Traverse the BST until reaching
+        // the end or finding the key
+        while (root != null) {
+            // If the key is found, assign it
+            // as the floor value and return
+            if (root.val == key) {
+                floor = root.val;
+                return floor;
+            }
+
+            // If the key is greater than the current
+            // node's value, move to the right subtree
+            if (key > root.val) {
+                // Update the floor with the current node's
+                // value and move to the right subtree
+                floor = root.val; ----------------------------------------> just is the difference in floor where we store right.val in floor
+                root = root.right;
+            } else {
+                // If the key is smaller than the current
+                // node's value, move to the left subtree
+                root = root.left;
+            }
+        }
+        // Return the computed floor value
+        return floor;
+    }
+}
+---------------------------------------
+✅ Time Complexity
+
+O(h) where h = height of BST
+
+Worst case (skewed tree): O(n)
+
+Best case (balanced tree): O(log n)
+
+✅ Space Complexity
+
+O(1) (iterative, no recursion stack)
+
+Same as searchBST.
