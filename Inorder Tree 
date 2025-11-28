@@ -1,0 +1,42 @@
+Problem Statement: Given root of binary tree, return the Inorder traversal of the binary tree.
+Code
+Cpp
+Java
+Python
+Javascript
+
+
+import java.util.ArrayList;
+import java.util.List;
+
+// TreeNode structure for the binary tree
+class TreeNode {
+    int data;
+    TreeNode left;
+    TreeNode right;
+
+    // Constructor to initialize the TreeNode with a value
+    TreeNode(int val) {
+        data = val;
+        left = null;
+        right = null;
+    }
+}
+
+class Solution {
+    private void recursiveInorder(TreeNode root, List<Integer> arr) {
+        if (root == null) {
+            return;
+        }
+        recursiveInorder(root.left, arr);
+        arr.add(root.data);
+        recursiveInorder(root.right, arr);
+    }
+
+    // Function to initiate inorder traversal and return the resulting list
+    public List<Integer> inorder(TreeNode root) {
+        List<Integer> arr = new ArrayList<>();
+        recursiveInorder(root, arr);
+        return arr;
+    }
+}
