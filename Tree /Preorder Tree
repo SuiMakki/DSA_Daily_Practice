@@ -1,0 +1,55 @@
+Preorder Traversal of Binary Tree
+
+Problem Statement: Given the root of a Binary Tree, return the preorder, inorder and postorder traversal sequence of the given tree by making just one traversal
+
+ // Node structure for
+// the binary tree
+class Node {
+    int data;
+    Node left;
+    Node right;
+
+    // Constructor to initialize
+    // the node with a value
+    Node(int val) {
+        data = val;
+        left = null;
+        right = null;
+    }
+}
+
+// Solution class to perform preorder traversal
+class Solution {
+
+    // Function to perform preorder traversal
+    // of the tree and store values in 'arr'
+    public void preorder(Node root, java.util.List<Integer> arr) {
+        // If the current node is NULL
+        // (base case for recursion), return
+        if (root == null) {
+            return;
+        }
+        // Push the current node's
+        // value into the vector
+        arr.add(root.data);
+        // Recursively traverse
+        // the left subtree
+        preorder(root.left, arr);
+        // Recursively traverse 
+        // the right subtree
+        preorder(root.right, arr);
+    }
+
+    // Function to initiate preorder traversal
+    // and return the resulting list
+    public java.util.List<Integer> preOrder(Node root) {
+        // Create an empty list to
+        // store preorder traversal values
+        java.util.List<Integer> arr = new java.util.ArrayList<>();
+        // Call the preorder traversal function
+        preorder(root, arr);
+        // Return the resulting list
+        // containing preorder traversal values
+        return arr;
+    }
+}
