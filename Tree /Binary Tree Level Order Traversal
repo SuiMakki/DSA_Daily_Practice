@@ -1,0 +1,72 @@
+Level Order Traversal (BFS - Breadth-First Search) — step-by-step in points:
+
+Create an empty list ans and an empty Queue. If root == null, return ans immediately.
+Add only the root to the queue using q.add(root). At this time, the queue contains just the root node (not the whole tree).
+Enter the while loop: while (!q.isEmpty()). Each full while-loop run processes exactly one level of the tree.
+Read size = q.size(). This tells how many nodes belong to the current level.
+Create an empty list level to store values of the nodes in the current level.
+Run a for loop from i = 0 to size − 1:
+Remove a node using node = q.poll(). This node is part of the current level.
+Add its value using level.add(node.val).
+If node.left != null, add it to the queue using q.add(node.left). It will be processed in the next level.
+If node.right != null, add it to the queue using q.add(node.right). It will also be processed in the next level.
+When the for loop ends, the level list has all node values for that level. Add it to ans using ans.add(level).
+Go back to the while condition and repeat until q becomes empty.
+When the queue is empty, all levels are processed. Return ans which contains values level-by-level.
+------------------------------------------------------------------
+Binary Tree Level Order Traversal
+Medium
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+Example 1:
+
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
+-------------------------------------------------------
+/**
+ * Definition for a binary tree node.
+ * public class TreeNode {
+ *     int val;
+ *     TreeNode left;
+ *     TreeNode right;
+ *     TreeNode() {}
+ *     TreeNode(int val) { this.val = val; }
+ *     TreeNode(int val, TreeNode left, TreeNode right) {
+ *         this.val = val;
+ *         this.left = left;
+ *         this.right = right;
+ *     }
+ * }
+ */
+class Solution {
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> ans = new ArrayList<>();
+        if (root == null)
+            return ans;
+
+        Queue<TreeNode> q = new LinkedList<>();
+        q.add(root);
+
+        while (!q.isEmpty()) {
+            List<Integer> level = new ArrayList<>();
+            int size = q.size();
+            for (int i = 0; i < size; i++) {
+                TreeNode node = q.poll();
+                level.add(node.val);
+
+                if (node.left != null) {
+                    q.add(node.left);
+                }
+
+                if (node.right != null) {
+                    q.add(node.right);
+                }
+            }
+            ans.add(level);
+        }
+        return ans;
+    }
+}
+------------------------------------------------
+Time Complexity = O(N) — because every node is visited once.
+Space Complexity = O(N) — in the worst case the queue can store ~N/2 nodes (last level).
