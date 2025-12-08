@@ -1,0 +1,101 @@
+public boolean palindrome(int n) {
+        int revNum = 0; 
+        int dup = n; 
+
+        // Iterate through each digit of the number until it becomes 0
+        while (n > 0) {
+            int ld = n % 10;
+            revNum = (revNum * 10) + ld; 
+            n = n / 10; 
+        }
+
+        // Check if the original number is equal to its reverse
+        return dup == revNum; 
+    }
+________________________________
+Dry run of the code for example n = 121
+
+public boolean palindrome(int n) {
+    int revNum = 0;
+    int dup = n;
+    while (n > 0) {
+        int ld = n % 10;
+        revNum = (revNum * 10) + ld;
+        n = n / 10;
+    }
+    return dup == revNum;
+}
+
+
+---
+
+Start
+
+n = 121
+
+revNum = 0
+
+dup = 121
+
+
+
+---
+
+Loop 1
+
+ld = n % 10 = 121 % 10 = 1
+
+revNum = (0 * 10) + 1 = 1
+
+n = n / 10 = 121 / 10 = 12
+
+
+
+---
+
+Loop 2
+
+ld = 12 % 10 = 2
+
+revNum = (1 * 10) + 2 = 12
+
+n = 12 / 10 = 1
+
+
+
+---
+
+Loop 3
+
+ld = 1 % 10 = 1
+
+revNum = (12 * 10) + 1 = 121
+
+n = 1 / 10 = 0
+
+
+
+---
+
+Loop stops because n > 0 is false
+
+Now:
+
+dup = 121
+
+revNum = 121
+
+
+
+---
+
+Final comparison
+
+return dup == revNum → 121 == 121 → true
+
+So for input 121 → palindrome returns true ✔
+
+
+---
+
+If you want, I can dry-run another number (like 123 or 1221).
