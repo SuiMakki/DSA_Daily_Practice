@@ -1,0 +1,63 @@
+Check if two arrays are equal or not
+Given two arrays, a and b of equal length. The task is to determine if the given arrays are equal or not. Two arrays are considered equal if:
+
+Both arrays contain the same set of elements.
+The arrangements (or permutations) of elements may be different.
+If there are repeated elements, the counts of each element must be the same in both arrays.
+Examples: 
+
+Input: a[] = [1, 2, 5, 4, 0], b[] = [2, 4, 5, 0, 1]
+Output: true
+
+Input: a[] = [1, 2, 5, 4, 0, 2, 1], b[] = [2, 4, 5, 0, 1, 1, 2] 
+Output: true
+
+ Input: a[] = [1, 7, 1], b[] = [7, 7, 1]
+Output: false
+-------------------------------------
+import java.util.HashMap;
+import java.util.Map;
+
+public class ArrayEquality {
+    public static boolean areEqual(int[] a, int[] b) {
+        // Step 1: Basic length check
+        if (a.length != b.length) {
+            return false;
+        }
+
+        // Step 2: Create a frequency map for array 'a'
+        Map<Integer, Integer> map = new HashMap<>();
+        for (int val : a) {
+            map.put(val, map.getOrDefault(val, 0) + 1);
+        }
+
+        // Step 3: Iterate through array 'b' and decrement counts
+        for (int val : b) {
+            // If element doesn't exist in map, arrays aren't equal
+            if (!map.containsKey(val)) {
+                return false;
+            }
+            
+            map.put(val, map.get(val) - 1);
+            
+            // Optimization: Remove keys if count hits zero
+            if (map.get(val) == 0) {
+                map.remove(val);
+            }
+        }
+
+        // Step 4: If map is empty, all frequencies matched
+        return map.isEmpty();
+    }
+
+    public static void main(String[] args) {
+        int[] a = {1, 2, 5, 4, 0};
+        int[] b = {2, 4, 5, 0, 1};
+
+        System.out.println("Are arrays equal? " + areEqual(a, b));
+    }
+}
+------------------------------
+Metric,Complexity,Explanation
+Time Complexity,O(n),We traverse each array exactly once. Map operations (put/get) are O(1) on average.
+Space Complexity,O(n),"In the worst case (all elements unique), the HashMap stores n entries."
