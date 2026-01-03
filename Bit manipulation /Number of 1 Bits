@@ -1,0 +1,36 @@
+191. Number of 1 Bits - Explanation
+Problem Link
+
+Description
+You are given an unsigned integer n. Return the number of 1 bits in its binary representation.
+
+You may assume n is a non-negative integer which fits within 32-bits.
+
+Example 1:
+
+Input: n = 00000000000000000000000000010111
+
+Output: 4
+Example 2:
+
+Input: n = 01111111111111111111111111111101
+
+Output: 30
+---------------------------------------------------------------------
+Algorithm
+Convert the given number n into its binary representation
+(using a built-in binary conversion or bit-count utility provided by the language).
+Count the number of 1 bits in that representation.
+Return the count.
+--------------------------------------
+public class Solution {
+    public int hammingWeight(int n) {
+        return Integer.bitCount(n);
+    }
+}
+-----------------------------------
+Time & Space Complexity
+Time complexity: 
+O(1)
+Space complexity: 
+O(1)
