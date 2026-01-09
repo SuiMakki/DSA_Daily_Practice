@@ -64,3 +64,5 @@ class ProductOfArrayExceptSelf {
   }
 
 }
+
+Youtube : https://www.youtube.com/watch?v=G9zKmhybKBM
