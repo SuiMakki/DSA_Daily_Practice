@@ -1,0 +1,38 @@
+Reverse String
+Solved 
+You are given an array of characters which represents a string s. Write a function which reverses a string.
+
+You must do this by modifying the input array in-place with O(1) extra memory.
+
+Example 1:
+
+Input: s = ["n","e","e","t"]
+
+Output: ["t","e","e","n"]
+Example 2:
+
+Input: s = ["r","a","c","e","c","a","r"]
+
+Output: ["r","a","c","e","c","a","r"]
+Constraints:
+
+1 <= s.length < 100,000
+s[i] is a printable ascii character.
+---------------------------------------------------------
+
+class Solution {
+    public void reverseString(char[] s) {
+        int left = 0;
+        int right = s.length-1;
+        while(left < right){
+            char temp = s[left];
+            s[left] = s[right];
+            s[right] = temp;
+            right--;
+            left++;
+        }
+    }
+}
+
+-----------------------------------
+Time - O(n) and Space - O(1)
