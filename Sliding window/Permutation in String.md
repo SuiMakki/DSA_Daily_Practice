@@ -49,9 +49,9 @@ Constraints:
 -----------------------------------------------------
 
 Pattern: Fixed-Size Sliding Window
-Time Complexity: $O(n)
-Why? We visit each character in s2 exactly once.
-Space Complexity: $O(1)
-Why? The frequency array size is always 26, regardless of input length.
+
+Time Complexity: O(n)
+
+Space Complexity: O(1)
 
 Permutation in String: Window size is Fixed. You look for a specific set of characters.
