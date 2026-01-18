@@ -33,36 +33,32 @@ s may consist of printable ASCII characters.
  * Space Complexity: O(k) where k is the size of the character set.
  */
 
-        public class Solution {
+        class Solution {
             public int lengthOfLongestSubstring(String s) {
-        // Convert string to char array to allow s[r] style access
+        // Convert to char array to use s[r] syntax like in the image
         char[] str = s.toCharArray();
-        int[] count = new int[256];
         
-        int l = 0;
-        int r = 0;
-        int ans = 0;
+        int[] count = new int[256];
+        int l = 0;   // starting index of window
+        int r = 0;   // ending index of window
+        int ans = 0; // length of longest substring no repeating characters
 
-        // Pattern: Sliding Window
         while (r < str.length) {
-            // Expand window
+            
             count[str[r]]++;
 
-            // If duplicate found, shrink from left
             while (count[str[r]] > 1) {
                 count[str[l]]--;
                 l++;
             }
 
-            // Update max length
             ans = Math.max(ans, r - l + 1);
             r++;
         }
+        
         return ans;
-           }
-   
-
-
+    }
+        }
 ----------------------------------------
 
 Key MetricsTime Complexity: O(n)
