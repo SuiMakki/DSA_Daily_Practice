@@ -33,40 +33,34 @@ s may consist of printable ASCII characters.
  * Space Complexity: O(k) where k is the size of the character set.
  */
 
-        class Solution {
-        public int lengthOfLongestSubstring(String s) {
-        // Frequency array to store the count of characters in the current window
-        // Using 256 for all extended ASCII characters
-
-        int[] count = new int[256]; 
+        public class Solution {
+            public int lengthOfLongestSubstring(String s) {
+        // Convert string to char array to allow s[r] style access
+        char[] str = s.toCharArray();
+        int[] count = new int[256];
         
-        int l = 0; // Left pointer (start of window)
-        int r = 0; // Right pointer (end of window)
-        int maxLength = 0;
+        int l = 0;
+        int r = 0;
+        int ans = 0;
 
-        while (r < s.length()) {
-            char rightChar = s.charAt(r);
-            count[rightChar]++;
+        // Pattern: Sliding Window
+        while (r < str.length) {
+            // Expand window
+            count[str[r]]++;
 
-            // If the current character count > 1, we have a duplicate.
-            // Shrink the window from the left until the duplicate is removed.
-            while (count[rightChar] > 1) {
-                char leftChar = s.charAt(l);
-                count[leftChar]--;
+            // If duplicate found, shrink from left
+            while (count[str[r]] > 1) {
+                count[str[l]]--;
                 l++;
             }
 
-            // Update the maximum length found so far
-            // Window size is (right - left + 1)
-            maxLength = Math.max(maxLength, r - l + 1);
-            
-            // Expand the window
+            // Update max length
+            ans = Math.max(ans, r - l + 1);
             r++;
         }
-
-        return maxLength;
-        }
-        }
+        return ans;
+           }
+   
 
 
 ----------------------------------------
