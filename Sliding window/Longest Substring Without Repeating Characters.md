@@ -34,28 +34,23 @@ s may consist of printable ASCII characters.
  */
 
         class Solution {
-            public int lengthOfLongestSubstring(String s) {
-        // Convert to char array to use s[r] syntax like in the image
-        char[] str = s.toCharArray();
-        
+            public int lengthOfLongestSubstring(char[] s) { // Changed String to char[] for s[r] syntax
         int[] count = new int[256];
-        int l = 0;   // starting index of window
-        int r = 0;   // ending index of window
-        int ans = 0; // length of longest substring no repeating characters
+        int l = 0; // starting index of window
+        int r = 0; // ending index of window
+        int ans = 0; // length of longest substring no repeating char
 
-        while (r < str.length) {
-            
-            count[str[r]]++;
+        while (r < s.length) {
+            count[s[r]]++;
 
-            while (count[str[r]] > 1) {
-                count[str[l]]--;
+            while (count[s[r]] > 1) {
+                count[s[l]]--;
                 l++;
             }
 
             ans = Math.max(ans, r - l + 1);
             r++;
         }
-        
         return ans;
     }
         }
