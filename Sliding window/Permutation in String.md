@@ -48,6 +48,10 @@ Constraints:
 
 -----------------------------------------------------
 
-Here are the Flash Card style notes for your GitHub repository or study guide.Flash Card 1: Complexity & PatternProblem: Permutation in String (LeetCode 567)Pattern: Fixed-Size Sliding WindowTime Complexity: $O(n)$Why? We visit each character in s2 exactly once.Space Complexity: $O(1)$Why? The frequency array size is always 26, regardless of input length.
+Pattern: Fixed-Size Sliding Window
+Time Complexity: $O(n)
+Why? We visit each character in s2 exactly once.
+Space Complexity: $O(1)
+Why? The frequency array size is always 26, regardless of input length.
 
 Permutation in String: Window size is Fixed. You look for a specific set of characters.
