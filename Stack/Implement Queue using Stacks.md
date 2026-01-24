@@ -86,3 +86,49 @@ Follow-up: Can you implement the queue such that each operation is amortized O(1
 
 time - O(n)
 space - O(n)
+
+------------------------------------------------------------------------------------
+
+    class MyQueue {
+        Stack<Integer> q;
+        Stack<Integer> w;
+        public MyQueue() {
+            q = new Stack<>();
+            w = new Stack<>();
+        }
+        
+        public void push(int x) {
+            q.push(x);
+        }
+        
+        public int pop() {
+            if(w.isEmpty()){
+                while(!q.isEmpty()){
+                    w.push(q.pop());
+                }
+            }
+            return w.pop();
+        }
+        
+        public int peek() {
+            if(w.isEmpty()){
+                while(!q.isEmpty()){
+                    w.push(q.pop());
+                }
+            }
+            return w.peek();
+        }
+        
+        public boolean empty() {
+            return q.isEmpty() && w.isEmpty();
+        }
+    }
+    
+    /**
+     * Your MyQueue object will be instantiated and called as such:
+     * MyQueue obj = new MyQueue();
+     * obj.push(x);
+     * int param_2 = obj.pop();
+     * int param_3 = obj.peek();
+     * boolean param_4 = obj.empty();
+     */
